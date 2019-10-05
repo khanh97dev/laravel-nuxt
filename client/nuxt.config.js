@@ -65,7 +65,7 @@ module.exports = {
   ],
 
   modules: [
-    '@nuxtjs/router',
+    // '@nuxtjs/router',
     '@nuxtjs/axios'
   ],
 
