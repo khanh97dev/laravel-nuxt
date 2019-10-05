@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use App\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -35,7 +35,9 @@ class RegisterController extends Controller
         if ($user instanceof MustVerifyEmail) {
             return response()->json(['status' => trans('verification.sent')]);
         }
-
+        // add token in user
+        $token = \JWTAuth::fromUser($user);
+        $user['token'] = $token;
         return response()->json($user);
     }
 

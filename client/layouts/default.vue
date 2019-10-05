@@ -1,58 +1,9 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-navigation-drawer v-model="drawer" app>
-        <v-list dense>
-          <v-list-group v-for="item in items" :key="item.title" v-model="item.active" no-action>
-            <template v-slot:activator>
-              <v-list-item-icon>
-                <v-icon>mdi-magnify</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.title"></v-list-item-title>
-              </v-list-item-content>
-            </template>
+      <sidebar :drawer="drawer" />
 
-            <v-list-item v-for="subItem in item.items" :key="subItem.title" @click="">
-              <v-list-item-content>
-                <v-list-item-title v-text="subItem.title"></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
-        </v-list>
-      </v-navigation-drawer>
-
-      <v-app-bar app
-        color="primary accent-4"
-        dark
-      >
-        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-        <v-toolbar-title>Page title</v-toolbar-title>
-
-        <div class="flex-grow-1"></div>
-
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn icon v-on="on">
-              <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-item @click="$store.dispatch('auth/logout')">
-              <v-list-item-title>Logout</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-      </v-app-bar>
+      <header-bar @toggleSidebar="toggleSidebar"/>
 
       <v-content>
         <v-container fluid fill-height>
@@ -69,67 +20,26 @@
     </v-app>
   </div>
 </template>
-
 <script>
-  export default {
-    data () {
-      return {
-        drawer: true,
-        items: [
-          {
-            action: 'local_activity',
-            title: 'Attractions',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'restaurant',
-            title: 'Dining',
-            active: true,
-            items: [
-              { title: 'Breakfast & brunch' },
-              { title: 'New American' },
-              { title: 'Sushi' },
-            ],
-          },
-          {
-            action: 'school',
-            title: 'Education',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'directions_run',
-            title: 'Family',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'healing',
-            title: 'Health',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'content_cut',
-            title: 'Office',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'local_offer',
-            title: 'Promotions',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-        ],
-      }
-    },
-  }
+import HeaderBar from '@/components/LayoutAdmin/HeaderBar.vue'
+import sidebar from '@/components/LayoutAdmin/sidebar.vue'
+export default {
+  components: {
+    HeaderBar, sidebar
+  },
+  data() {
+    return {
+      drawer: localStorage.getItem('sidebarOff') ? false : true,
+      numbers: 1,
+    }
+  },// data
+  methods: {
+    toggleSidebar(){
+      this.drawer = !this.drawer
+      this.drawer
+        ? localStorage.removeItem('sidebarOff')
+        : localStorage.setItem('sidebarOff', 1)
+    }
+  },// methods
+}
 </script>

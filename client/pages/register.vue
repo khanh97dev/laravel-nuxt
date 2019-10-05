@@ -86,17 +86,18 @@ export default {
   methods: {
     async register () {
       // Register the user.
-      const { data } = await this.form.post('/register')
-
+      try {
+        var data = await this.$axios.$post('/register', this.form)
+      } catch (e) {
+        return;
+      }
       // Must verify email fist.
-      if (data.status) {
+      if (data) {
         this.mustVerifyEmail = true
       } else {
-        // Log in the user.
-        const { data: { token } } = await this.form.post('/login')
-
+        let data = response.data
         // Save the token.
-        this.$store.dispatch('auth/saveToken', { token })
+        this.$store.dispatch('auth/saveToken', { token: data.token })
 
         // Update the user.
         await this.$store.dispatch('auth/updateUser', { user: data })
