@@ -70,6 +70,8 @@ export const actions = {
     Cookies.remove('token')
 
     commit('LOGOUT')
+
+    $nuxt.$router.push('/login')
   },
 
   async fetchOauthUrl (ctx, { provider }) {

@@ -1,7 +1,7 @@
 import LaravelEcho from "laravel-echo"
-
+import Cookies from 'js-cookie'
 export default ({ app, store, redirect }) => {
-    const token = store.getters['auth/token']
+    const token = Cookies.get('token') || null;
 
     window.Pusher = require('pusher-js');
 

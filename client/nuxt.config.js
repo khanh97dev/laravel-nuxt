@@ -11,7 +11,9 @@ module.exports = {
     apiUrl: process.env.API_URL || process.env.APP_URL + '/api',
     appName: process.env.APP_NAME || 'Laravel Nuxt',
     appLocale: process.env.APP_LOCALE || 'en',
-    githubAuth: !!process.env.GITHUB_CLIENT_ID
+    githubAuth: !!process.env.GITHUB_CLIENT_ID,
+    PUSHER_APP_KEY: process.env.PUSHER_APP_KEY || '',
+    PUSHER_APP_CLUSTER: process.env.PUSHER_APP_CLUSTER || '',
   },
 
   axios: {
@@ -57,6 +59,7 @@ module.exports = {
     '~plugins/axios',
     '~plugins/fontawesome',
     '~plugins/vuetify',
+    '~plugins/laravel-echo',
     '~plugins/nuxt-client-init', // Comment this for SSR
     { src: '~plugins/bootstrap', mode: 'client' }
   ],
