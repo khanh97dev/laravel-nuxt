@@ -50,7 +50,7 @@
 import Form from 'vform'
 
 export default {
-  middleware: 'auth',
+  // middleware: 'auth',
 
   head () {
     return { title: this.$t('reset_password') }

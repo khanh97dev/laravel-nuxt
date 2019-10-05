@@ -26,7 +26,6 @@ const routes = [
       { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
     ] }
 ]
-
 export function createRouter () {
   return new Router({
     routes,

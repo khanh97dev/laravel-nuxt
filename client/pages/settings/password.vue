@@ -52,7 +52,7 @@ export default {
 
   methods: {
     async update () {
-      await this.form.patch('/settings/password')
+      await this.$axios.$post('/password/reset', this.form)
 
       this.form.reset()
     }
