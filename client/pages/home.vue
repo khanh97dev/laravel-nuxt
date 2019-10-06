@@ -7,7 +7,7 @@
 <script>
 export default {
   middleware: 'auth',
-
+  layout: 'admin',
   head () {
     return { title: this.$t('home') }
   }

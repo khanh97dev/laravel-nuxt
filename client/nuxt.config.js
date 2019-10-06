@@ -43,7 +43,7 @@ module.exports = {
     ]
   },
 
-  loading: { color: '#007bff', height: '5px' },
+  loading: { color: '#06E254', height: '5px' },
 
   router: {
     middleware: ['locale', 'check-auth'],
@@ -60,9 +60,9 @@ module.exports = {
     '~plugins/axios',
     '~plugins/fontawesome',
     '~plugins/vuetify',
+    '~plugins/notification',
     '~plugins/laravel-echo',
     '~plugins/nuxt-client-init', // Comment this for SSR
-    { src: '~plugins/bootstrap', mode: 'client' }
   ],
 
   modules: [

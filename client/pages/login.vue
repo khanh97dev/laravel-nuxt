@@ -1,8 +1,8 @@
 <template>
   <div class="row">
     <div class="col-lg-6 m-auto">
-      <v-form @submit.prevent="login" @keydown="form.onKeydown($event)">
-        <v-card class="elevation-12">
+      <v-card class="elevation-12">
+        <v-form @submit.prevent="login" @keydown="form.onKeydown($event)">
           <v-toolbar color="primary" dark flat>
             <v-toolbar-title>Login form</v-toolbar-title>
             <div class="flex-grow-1"></div>
@@ -16,8 +16,8 @@
             <v-btn type="submit" color="primary" :loading="loading">Login</v-btn>
             <login-with-github />
           </v-card-actions>
-        </v-card>
-      </v-form>
+        </v-form>
+      </v-card>
     </div>
   </div>
 </template>

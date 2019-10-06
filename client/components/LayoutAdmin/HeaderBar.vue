@@ -2,7 +2,7 @@
   <v-app-bar app color="primary accent-4" dark>
     <v-app-bar-nav-icon @click="$emit('toggleSidebar')"></v-app-bar-nav-icon>
 
-    <v-toolbar-title>Page title</v-toolbar-title>
+    <v-toolbar-title @click="$router.push('/')">Admin</v-toolbar-title>
 
     <div class="flex-grow-1"></div>
 
@@ -11,7 +11,20 @@
     </v-btn>
 
     <v-btn icon>
-      <v-icon>mdi-magnify</v-icon>
+      <v-badge
+        color="green"
+        overlap
+      >
+        <template v-slot:badge>
+          <span>1</span>
+        </template>
+        <v-icon large>mdi-email</v-icon>
+      </v-badge>
+      <template v-slot:activator="{ on }">
+        <v-btn icon v-on="on">
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+      </template>
     </v-btn>
 
     <v-menu offset-y>
@@ -28,3 +41,8 @@
     </v-menu>
   </v-app-bar>
 </template>
+<script>
+export default {
+  middleware: 'auth'
+}
+</script>
