@@ -10,7 +10,7 @@ export const state = () => ({
 export const getters = {
   user: state => state.user,
   token: state => state.token,
-  check: state => state.token !== null
+  check: state => state.user !== null
 }
 
 // mutations
@@ -47,8 +47,7 @@ export const actions = {
 
   async fetchUser ({ commit }) {
     try {
-      const { data } = await $nuxt.$axios.$get('/user')
-
+      const data = await $nuxt.$axios.$get('/user')
       commit('FETCH_USER_SUCCESS', data)
     } catch (e) {
       Cookies.remove('token')

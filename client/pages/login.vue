@@ -60,7 +60,9 @@
           const response = await this.$axios.post('/login', this.form)
           data = response.data
         } catch (e) {
-          this.errors = e.response.data.errors;
+          let exception = e.response.data
+          if(exception.errors) this.errors = exception.errors;
+          else if(exception.error) this.$toast.error(exception.error, {duration: 2000});
           return
         } finally {
           this.loading = false

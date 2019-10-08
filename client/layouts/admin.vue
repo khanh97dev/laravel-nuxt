@@ -24,6 +24,8 @@
 import HeaderBar from '@/components/LayoutAdmin/HeaderBar.vue'
 import sidebar from '@/components/LayoutAdmin/sidebar.vue'
 export default {
+  middleware: 'auth',
+
   components: {
     HeaderBar, sidebar
   },
