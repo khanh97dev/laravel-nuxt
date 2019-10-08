@@ -2,7 +2,7 @@
   <v-app-bar app color="primary accent-4" dark>
     <v-app-bar-nav-icon @click="$emit('toggleSidebar')"></v-app-bar-nav-icon>
 
-    <v-toolbar-title @click="$router.push('/')">Admin</v-toolbar-title>
+    <span style="cursor: pointer;" @click="$router.push('/')">{{ $store.state.auth.user.name }}</span>
 
     <div class="flex-grow-1"></div>
 
@@ -30,7 +30,11 @@
     <v-menu offset-y>
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on">
-          <v-icon>mdi-dots-vertical</v-icon>
+          <v-toolbar-title>
+            <v-avatar color="indigo" size="36">
+              <span class="white--text headline">{{ $store.state.auth.user.name.substring(0, 2)  }}</span>
+            </v-avatar>
+          </v-toolbar-title>
         </v-btn>
       </template>
       <v-list>
