@@ -1,4 +1,3 @@
-import axios from 'axios'
 import Cookies from 'js-cookie'
 
 // state
@@ -11,7 +10,7 @@ export const state = () => ({
 export const getters = {
   user: state => state.user,
   token: state => state.token,
-  check: state => state.user !== null
+  check: state => state.token !== null
 }
 
 // mutations
@@ -48,7 +47,7 @@ export const actions = {
 
   async fetchUser ({ commit }) {
     try {
-      const { data } = await axios.get('/user')
+      const { data } = await $nuxt.$axios.$get('/user')
 
       commit('FETCH_USER_SUCCESS', data)
     } catch (e) {

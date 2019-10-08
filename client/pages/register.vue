@@ -96,10 +96,11 @@ export default {
       try {
         var data = await this.$axios.$post('/register', this.form)
       } catch (e) {
-        let errors = e.response.data
-        if(errors.errors.name === undefined)
-          this.$awn.alert(errors)
-        else this.errors = errors
+        let exception = e.response.data
+        if(exception.errors && exception.errors.name === undefined)
+          this.$toast.errors(exception, {duration: 2000})
+        else if(exception.errors) this.errors = errors
+        else if(exception.error) this.$toast.errors(exception.error, {duration: 2000})
         return;
       } finally {
         this.loading = false;
