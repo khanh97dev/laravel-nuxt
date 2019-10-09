@@ -45,8 +45,3 @@
     </v-menu>
   </v-app-bar>
 </template>
-<script>
-export default {
-  middleware: 'auth'
-}
-</script>

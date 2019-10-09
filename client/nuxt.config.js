@@ -60,6 +60,7 @@ module.exports = {
     '~plugins/axios',
     '~plugins/fontawesome',
     '~plugins/vuetify',
+    '~plugins/owl-carousel',
     '~plugins/notification',
     '~plugins/laravel-echo',
     '~plugins/nuxt-client-init', // Comment this for SSR
