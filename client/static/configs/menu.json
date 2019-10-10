@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Home",
+    "icon": "home",
+    "href": "/home"
+  },
+  {
+    "title": "Admin",
+    "icon": "",
+    "href": "/admin"
+  },
+  {
+    "title": "Profile",
+    "icon": "",
+    "href": "/admin/profile"
+  },
+  {
+    "title": "Vận đơn đang theo dõi",
+    "icon": "",
+    "href": "/admin/profile"
+  },
+  {
+    "icon": "local_offer",
+    "title": "Nhập hàng",
+    "active": true,
+    "children": [
+      {
+        "title": "Đặt hàng",
+        "href": "/admin/NhapHang/DatHang"
+      },
+      {
+        "title": "Dl xuất kho",
+        "href": "/admin/NhapHang/DlXuatKho"
+      },
+      {
+        "title": "Cập nhật dl",
+        "href": "/admin/NhapHang/CapNhatDl"
+      },
+      {
+        "title": "Đổi SKU",
+        "href": "/admin/NhapHang/DoiSKU"
+      },
+      {
+        "title": "Bảng giá nhập",
+        "href": "/admin/NhapHang/BangGiaNhap"
+      },
+      {
+        "title": "Bảng tối thiểu",
+        "href": "/admin/NhapHang/BangToiThieu"
+      }
+    ]
+  }
+]
