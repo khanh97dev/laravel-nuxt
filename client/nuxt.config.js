@@ -31,7 +31,9 @@ module.exports = {
 
   head: {
     title: process.env.APP_NAME,
-    titleTemplate: '%s - ' + process.env.APP_NAME,
+    titleTemplate: (titleChunk) => {
+      return titleChunk ? titleChunk : process.env.APP_NAME
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -61,6 +63,7 @@ module.exports = {
     '~plugins/fontawesome',
     '~plugins/vuetify',
     '~plugins/owl-carousel',
+    '~plugins/image-zoom',
     '~plugins/notification',
     '~plugins/laravel-echo',
     '~plugins/nuxt-client-init', // Comment this for SSR

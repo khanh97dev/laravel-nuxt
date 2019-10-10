@@ -1,86 +1,47 @@
 <template>
   <v-navigation-drawer v-model="drawer" app>
     <v-list dense>
-      <v-list-group v-for="item in items" :key="item.title" v-model="item.active" no-action>
-        <template v-slot:activator>
-          <v-list-item-icon>
-            <v-icon>mdi-magnify</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title"></v-list-item-title>
-          </v-list-item-content>
+      <template v-for="item in menus">
+        <!-- Is sub menu -->
+        <v-list-group v-if="item.children" v-model="item.active" no-action>
+          <template v-slot:activator>
+            <v-list-item-icon>
+              <v-icon>{{ item.icon || 'mdi-menu'}}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </template>
+          <v-list-item v-for="subItem in item.children" :key="subItem.title" @click="" :to="subItem.href">
+            <v-list-item-content>
+              <v-list-item-title v-text="subItem.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+        <!-- End sub menu -->
+        <template v-if="!item.children">
+          <v-list-item :to="item.href" @click="() => $router.push(item.href)">
+            <v-list-item-icon>
+              <v-icon v-text="item.icon || 'mdi-arrow-right-bold-outline'"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </template>
-
-        <v-list-item v-for="subItem in item.items" :key="subItem.title" @click="">
-          <v-list-item-content>
-            <v-list-item-title v-text="subItem.title"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list-group>
+      </template>
     </v-list>
   </v-navigation-drawer>
 </template>
 <script>
+  import Menus from '~/static/configs/menu.json'
   export default {
     props: {
       drawer: { default: true },
     },
     data () {
       return {
-        items: [
-          {
-            action: 'local_activity',
-            title: 'Attractions',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'restaurant',
-            title: 'Dining',
-            active: true,
-            items: [
-              { title: 'Breakfast & brunch' },
-              { title: 'New American' },
-              { title: 'Sushi' },
-            ],
-          },
-          {
-            action: 'school',
-            title: 'Education',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'directions_run',
-            title: 'Family',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'healing',
-            title: 'Health',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'content_cut',
-            title: 'Office',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'local_offer',
-            title: 'Promotions',
-            items: [
-              { title: 'List Item' },
-            ],
-          },
-        ],
+        menus: Menus,
       }
     },
   }

@@ -6,13 +6,11 @@
       <header-bar @toggleSidebar="toggleSidebar"/>
 
       <v-content>
-        <v-container fluid fill-height>
-          <v-layout align-center justify-center>
-            <v-flex text-xs-center>
-              <nuxt />
-            </v-flex>
-          </v-layout>
-        </v-container>
+        <v-layout justify-center>
+          <v-flex text-xs-center>
+            <nuxt />
+          </v-flex>
+        </v-layout>
       </v-content>
       <v-footer color="indigo" app>
         <span class="white--text">&copy; 2019</span>
@@ -25,7 +23,7 @@ import HeaderBar from '@/components/LayoutAdmin/HeaderBar.vue'
 import sidebar from '@/components/LayoutAdmin/sidebar.vue'
 export default {
   middleware: 'auth',
-
+  head: () => ({title: 'Quản lý'}),
   components: {
     HeaderBar, sidebar
   },

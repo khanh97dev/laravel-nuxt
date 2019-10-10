@@ -38,7 +38,8 @@
       loading: false,
       form: new Form({
         email: '',
-        password: ''
+        password: '',
+        remember: false,
       }),
       errors: {
         email: '',

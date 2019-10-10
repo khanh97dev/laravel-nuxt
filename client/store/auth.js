@@ -42,7 +42,7 @@ export const actions = {
   saveToken ({ commit, dispatch }, { token, remember }) {
     commit('SET_TOKEN', token)
 
-    Cookies.set('token', token, { expires: remember ? 365 : null })
+    Cookies.set('token', token, { expires: remember ? 365 : 30 })
   },
 
   async fetchUser ({ commit }) {

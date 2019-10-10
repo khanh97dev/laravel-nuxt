@@ -26,7 +26,7 @@
         </v-btn>
       </template>
     </v-btn>
-
+    <component v-for="(component, i) in notifies" :key="i" :is="component"></component>
     <v-menu offset-y>
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on">
@@ -45,3 +45,14 @@
     </v-menu>
   </v-app-bar>
 </template>
+<script>
+  export default {
+    data(){
+      return {
+        notifies: [
+          require('~/components/notifies/Email.vue').default
+        ]
+      }
+    },//data
+  }
+</script>
