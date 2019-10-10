@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <sidebar :drawer="drawer" />
+      <sidebar />
 
       <header-bar @toggleSidebar="toggleSidebar"/>
 
@@ -29,16 +29,17 @@ export default {
   },
   data() {
     return {
-      drawer: localStorage.getItem('sidebarOff') ? false : true,
       numbers: 1,
     }
   },// data
+  computed: {
+    drawer(){
+      return this.$store.getters['app/sidebar']
+    }
+  },// computed
   methods: {
     toggleSidebar(){
-      this.drawer = !this.drawer
-      this.drawer
-        ? localStorage.removeItem('sidebarOff')
-        : localStorage.setItem('sidebarOff', 1)
+      this.$store.commit('app/SET_SIDEBAR', !this.drawer)
     }
   },// methods
 }
