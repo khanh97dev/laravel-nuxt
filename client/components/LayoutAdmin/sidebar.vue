@@ -1,22 +1,31 @@
 <template>
   <v-navigation-drawer v-model="drawer" app>
     <v-list dense>
-      <v-list-group v-for="item in items" :key="item.title" v-model="item.active" no-action>
-        <template v-slot:activator>
+      <template v-for="item in items">
+        <v-list-group v-if="item.children" v-model="item.active" no-action>
+          <template v-slot:activator>
+            <v-list-item-icon>
+              <v-icon>mdi-magnify</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </template>
+          <v-list-item v-for="subItem in item.children" :key="subItem.title" @click="">
+            <v-list-item-content>
+              <v-list-item-title v-text="subItem.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+        <v-list-item v-else @click="">
           <v-list-item-icon>
             <v-icon>mdi-magnify</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title v-text="item.title"></v-list-item-title>
           </v-list-item-content>
-        </template>
-
-        <v-list-item v-for="subItem in item.items" :key="subItem.title" @click="">
-          <v-list-item-content>
-            <v-list-item-title v-text="subItem.title"></v-list-item-title>
-          </v-list-item-content>
         </v-list-item>
-      </v-list-group>
+      </template>
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -27,8 +36,13 @@
         items: [
           {
             action: 'local_activity',
+            title: 'No Sub Menu',
+            active: false
+          },
+          {
+            action: 'local_activity',
             title: 'Attractions',
-            items: [
+            children: [
               { title: 'List Item' },
             ],
           },
@@ -36,7 +50,7 @@
             action: 'restaurant',
             title: 'Dining',
             active: true,
-            items: [
+            children: [
               { title: 'Breakfast & brunch' },
               { title: 'New American' },
               { title: 'Sushi' },
@@ -45,35 +59,35 @@
           {
             action: 'school',
             title: 'Education',
-            items: [
+            children: [
               { title: 'List Item' },
             ],
           },
           {
             action: 'directions_run',
             title: 'Family',
-            items: [
+            children: [
               { title: 'List Item' },
             ],
           },
           {
             action: 'healing',
             title: 'Health',
-            items: [
+            children: [
               { title: 'List Item' },
             ],
           },
           {
             action: 'content_cut',
             title: 'Office',
-            items: [
+            children: [
               { title: 'List Item' },
             ],
           },
           {
             action: 'local_offer',
             title: 'Promotions',
-            items: [
+            children: [
               { title: 'List Item' },
             ],
           },
