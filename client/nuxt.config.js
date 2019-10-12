@@ -42,6 +42,12 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
+    ],
+    script: [
+      {
+        src: "//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js",
+        type: "text/javascript"
+      },
     ]
   },
 
@@ -65,6 +71,7 @@ module.exports = {
     '~plugins/owl-carousel',
     '~plugins/image-zoom',
     '~plugins/video',
+    '~plugins/handsontable',
     '~plugins/notification',
     '~plugins/laravel-echo',
     '~plugins/nuxt-client-init', // Comment this for SSR

@@ -5,21 +5,21 @@
         <v-list-group v-if="item.children" v-model="item.active" no-action>
           <template v-slot:activator>
             <v-list-item-icon>
-              <v-icon>mdi-magnify</v-icon>
+              <v-icon>{{ item.icon || 'mdi-arrow-right' }}</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title v-text="item.title"></v-list-item-title>
             </v-list-item-content>
           </template>
-          <v-list-item v-for="subItem in item.children" :key="subItem.title" @click="">
+          <v-list-item v-for="subItem in item.children" :key="subItem.title" :to="subItem.href">
             <v-list-item-content>
               <v-list-item-title v-text="subItem.title"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-group>
-        <v-list-item v-else @click="">
+        <v-list-item v-else :to="item.href">
           <v-list-item-icon>
-            <v-icon>mdi-magnify</v-icon>
+            <v-icon>{{ item.icon || 'mdi-arrow-right' }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title v-text="item.title"></v-list-item-title>
@@ -32,58 +32,13 @@
 <script>
   const menu =  [
     {
-      action: 'local_activity',
+      icon: 'mdi-table',
       title: 'No Sub Menu',
+      href: '/handsontable',
       active: false
     },
     {
-      action: 'local_activity',
       title: 'Attractions',
-      children: [
-        { title: 'List Item' },
-      ],
-    },
-    {
-      action: 'restaurant',
-      title: 'Dining',
-      active: true,
-      children: [
-        { title: 'Breakfast & brunch' },
-        { title: 'New American' },
-        { title: 'Sushi' },
-      ],
-    },
-    {
-      action: 'school',
-      title: 'Education',
-      children: [
-        { title: 'List Item' },
-      ],
-    },
-    {
-      action: 'directions_run',
-      title: 'Family',
-      children: [
-        { title: 'List Item' },
-      ],
-    },
-    {
-      action: 'healing',
-      title: 'Health',
-      children: [
-        { title: 'List Item' },
-      ],
-    },
-    {
-      action: 'content_cut',
-      title: 'Office',
-      children: [
-        { title: 'List Item' },
-      ],
-    },
-    {
-      action: 'local_offer',
-      title: 'Promotions',
       children: [
         { title: 'List Item' },
       ],
