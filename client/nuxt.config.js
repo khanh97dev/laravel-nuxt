@@ -64,6 +64,7 @@ module.exports = {
     '~plugins/vuetify',
     '~plugins/owl-carousel',
     '~plugins/image-zoom',
+    '~plugins/video',
     '~plugins/notification',
     '~plugins/laravel-echo',
     '~plugins/nuxt-client-init', // Comment this for SSR

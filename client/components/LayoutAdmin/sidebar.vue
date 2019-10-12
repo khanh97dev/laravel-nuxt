@@ -30,68 +30,70 @@
   </v-navigation-drawer>
 </template>
 <script>
+  const menu =  [
+    {
+      action: 'local_activity',
+      title: 'No Sub Menu',
+      active: false
+    },
+    {
+      action: 'local_activity',
+      title: 'Attractions',
+      children: [
+        { title: 'List Item' },
+      ],
+    },
+    {
+      action: 'restaurant',
+      title: 'Dining',
+      active: true,
+      children: [
+        { title: 'Breakfast & brunch' },
+        { title: 'New American' },
+        { title: 'Sushi' },
+      ],
+    },
+    {
+      action: 'school',
+      title: 'Education',
+      children: [
+        { title: 'List Item' },
+      ],
+    },
+    {
+      action: 'directions_run',
+      title: 'Family',
+      children: [
+        { title: 'List Item' },
+      ],
+    },
+    {
+      action: 'healing',
+      title: 'Health',
+      children: [
+        { title: 'List Item' },
+      ],
+    },
+    {
+      action: 'content_cut',
+      title: 'Office',
+      children: [
+        { title: 'List Item' },
+      ],
+    },
+    {
+      action: 'local_offer',
+      title: 'Promotions',
+      children: [
+        { title: 'List Item' },
+      ],
+    },
+  ];
   export default {
     data () {
       return {
-        items: [
-          {
-            action: 'local_activity',
-            title: 'No Sub Menu',
-            active: false
-          },
-          {
-            action: 'local_activity',
-            title: 'Attractions',
-            children: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'restaurant',
-            title: 'Dining',
-            active: true,
-            children: [
-              { title: 'Breakfast & brunch' },
-              { title: 'New American' },
-              { title: 'Sushi' },
-            ],
-          },
-          {
-            action: 'school',
-            title: 'Education',
-            children: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'directions_run',
-            title: 'Family',
-            children: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'healing',
-            title: 'Health',
-            children: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'content_cut',
-            title: 'Office',
-            children: [
-              { title: 'List Item' },
-            ],
-          },
-          {
-            action: 'local_offer',
-            title: 'Promotions',
-            children: [
-              { title: 'List Item' },
-            ],
-          },
-        ],
+        search: '',
+        items: menu
       }
     },// data
     computed: {
@@ -103,5 +105,22 @@
         },
       }
     },// computed
+    methods:{
+      searchMenu(){
+        let search = this.search;
+        if(search.length == 0) {
+          this.items = menu;
+          console.log(menu);
+          return menu;
+        }
+        this.items = this.items.map(function f(o) {
+          if (o.title.includes(search)) return true
+
+          if (o.children) {
+            return (o.children = o.children.map(f)).length
+          }
+        });
+      },
+    },//methods
   }
 </script>

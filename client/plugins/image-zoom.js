@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import VuePictureSwipe from 'vue-picture-swipe'
 
-Vue.component('vue-picture-swipe', VuePictureSwipe)
+import Lightbox from 'vue-easy-lightbox'
+Vue.use(Lightbox)
