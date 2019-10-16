@@ -1,16 +1,25 @@
 <template>
-  <hot-table
-    :data="data"
-    :colHeaders="true"
-    :rowHeaders="true"
-    :width="'auto'"
-    :columns="columns"
-    :height="'auto'"
-  >
-
-  </hot-table>
+  <div>
+    <hot-table
+      :data="data"
+      :colHeaders="true"
+      :rowHeaders="true"
+      :width="'auto'"
+      :columns="columns"
+      :height="500"
+    >
+    </hot-table>
+    <!-- Pagination -->
+    <v-pagination
+      v-model="page"
+      :length="4"
+      prev-icon="mdi-menu-left"
+      next-icon="mdi-menu-right"
+    ></v-pagination>
+  </div>
 </template>
 <script>
+
   import { HotTable } from '@handsontable/vue';
   const dataDemo = require('~/static/demo/data').default
 
@@ -19,7 +28,17 @@
     components: {
       HotTable
     },
-
+    computed: {
+      page: {
+        get(){
+          return parseInt(this.$route.query.page) || 1
+        },
+        set(page){
+          this.handlePage(page);
+          return page;
+        }
+      }
+    },//computed
     data: function() {
       return {
         data: dataDemo,
@@ -354,5 +373,13 @@
         ]
       };
     },
+    methods:{
+      handlePage(page){
+        // set query
+        this.$router.push({ query: { page } })
+        // handle
+        console.log(page)
+      }
+    },//methods
   }
 </script>

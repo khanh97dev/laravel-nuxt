@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" app>
+  <v-navigation-drawer v-model="drawer" class="indigo lighten-5" app>
     <v-list dense>
       <template v-for="item in items">
         <v-list-group v-if="item.children" v-model="item.active" no-action>

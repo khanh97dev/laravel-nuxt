@@ -12,7 +12,7 @@
           </v-flex>
         </v-layout>
       </v-content>
-      <v-footer color="indigo" app>
+      <v-footer color="purple darken-3" app>
         <span class="white--text">&copy; 2019</span>
       </v-footer>
     </v-app>

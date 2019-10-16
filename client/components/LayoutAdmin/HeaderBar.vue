@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app color="primary accent-4" dark>
+  <v-app-bar app color="purple darken-4" dark>
     <v-app-bar-nav-icon @click="$emit('toggleSidebar')"></v-app-bar-nav-icon>
 
     <span style="cursor: pointer;" @click="$router.push('/')">{{ $store.state.auth.user.name }}</span>
