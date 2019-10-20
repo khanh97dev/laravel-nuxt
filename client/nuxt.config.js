@@ -71,6 +71,7 @@ module.exports = {
     '~plugins/owl-carousel',
     '~plugins/image-zoom',
     '~plugins/video',
+    '~plugins/unitegallery',
     '~plugins/handsontable',
     '~plugins/notification',
     '~plugins/laravel-echo',
