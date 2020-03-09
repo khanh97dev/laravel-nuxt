@@ -2,9 +2,7 @@
   <div id="app">
     <v-app id="inspire">
       <sidebar />
-
       <header-bar @toggleSidebar="toggleSidebar"/>
-
       <v-content>
         <v-layout justify-center>
           <v-flex text-xs-center>

@@ -1,5 +1,5 @@
 <template>
   <div>
-    Dữ liệu xuất kho
+    test
   </div>
 </template>

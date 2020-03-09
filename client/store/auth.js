@@ -69,7 +69,7 @@ export const actions = {
 
     commit('LOGOUT')
 
-    $nuxt.$router.push('/login')
+    $nuxt.$router.push('/logged/login')
   },
 
   async fetchOauthUrl (ctx, { provider }) {

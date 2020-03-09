@@ -2,7 +2,15 @@
   <v-navigation-drawer v-model="drawer" class="indigo lighten-5" app>
     <v-list dense>
       <template v-for="item in items">
-        <v-list-group v-if="item.children" v-model="item.active" no-action>
+        <v-list-item v-if="!item.children" :to="{ path: item.href }">
+          <v-list-item-icon>
+            <v-icon>{{ item.icon || 'mdi-arrow-right' }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-group v-else v-model="item.active" no-action>
           <template v-slot:activator>
             <v-list-item-icon>
               <v-icon>{{ item.icon || 'mdi-arrow-right' }}</v-icon>
@@ -11,39 +19,18 @@
               <v-list-item-title v-text="item.title"></v-list-item-title>
             </v-list-item-content>
           </template>
-          <v-list-item v-for="subItem in item.children" :key="subItem.title" :to="subItem.href">
+          <v-list-item v-for="subItem in item.children" :key="subItem.title" :to="{ path: subItem.href }">
             <v-list-item-content>
               <v-list-item-title v-text="subItem.title"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-group>
-        <v-list-item v-else :to="item.href">
-          <v-list-item-icon>
-            <v-icon>{{ item.icon || 'mdi-arrow-right' }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
       </template>
     </v-list>
   </v-navigation-drawer>
 </template>
 <script>
-  const menu =  [
-    {
-      icon: 'mdi-table',
-      title: 'No Sub Menu',
-      href: '/handsontable',
-      active: false
-    },
-    {
-      title: 'Attractions',
-      children: [
-        { title: 'List Item' },
-      ],
-    },
-  ];
+  import menu from '~/configs/menu.js';
   export default {
     data () {
       return {

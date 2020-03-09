@@ -2,7 +2,7 @@
   <v-app-bar app color="purple darken-4" dark>
     <v-app-bar-nav-icon @click="$emit('toggleSidebar')"></v-app-bar-nav-icon>
 
-    <span style="cursor: pointer;" @click="$router.push('/')">{{ $store.state.auth.user.name }}</span>
+    <span style="cursor: pointer;" @click="$router.push(prefixAdmin)">{{ $store.state.auth.user.name }}</span>
 
     <div class="flex-grow-1"></div>
 
@@ -29,9 +29,11 @@
   </v-app-bar>
 </template>
 <script>
+  import { prefixAdmin } from '~/configs/prefix';
   export default {
     data(){
       return {
+        prefixAdmin: prefixAdmin,
         notifies: [
           require('~/components/notifies/Email.vue').default
         ]

@@ -1,10 +1,5 @@
 <template>
-  <v-container
-    class="pa-2"
-    fluid
-  >
-    <nuxt />
-  </v-container>
+  <nuxt/>
 </template>
 <script>
 export default {
