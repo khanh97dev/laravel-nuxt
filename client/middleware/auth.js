@@ -1,5 +1,6 @@
+import { prefixLogged } from '~/configs/prefix'
 export default ({ store, redirect }) => {
   if (!store.getters['auth/check']) {
-    return redirect('/logged/login')
+    return redirect(prefixLogged  + '/login')
   }
 }

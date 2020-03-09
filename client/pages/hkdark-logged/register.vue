@@ -63,6 +63,7 @@
 
 <script>
 import Form from 'vform'
+import { prefixAdmin } from '~/configs/prefix'
 
 export default {
   middleware: 'guest',
@@ -117,7 +118,7 @@ export default {
         await this.$store.dispatch('auth/updateUser', { user: data })
 
         // Redirect home.
-        this.$router.push({ path: '/admin' })
+        this.$router.push({ path: prefixAdmin })
       }
     }
   }

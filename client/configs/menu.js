@@ -1,4 +1,5 @@
 import { prefixAdmin } from '~/configs/prefix';
+
 export default [
   {
     icon: 'mdi-cog',

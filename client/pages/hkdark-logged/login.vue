@@ -24,6 +24,7 @@
 
 <script>
   import Form from 'vform'
+  import { prefixAdmin } from '~/configs/prefix'
 
   export default {
     middleware: 'guest',

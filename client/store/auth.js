@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+import { prefixLogged } from '~/configs/prefix'
 
 // state
 export const state = () => ({
@@ -69,7 +70,7 @@ export const actions = {
 
     commit('LOGOUT')
 
-    $nuxt.$router.push('/logged/login')
+    $nuxt.$router.push( prefixLogged  + '/login')
   },
 
   async fetchOauthUrl (ctx, { provider }) {

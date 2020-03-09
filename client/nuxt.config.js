@@ -14,6 +14,8 @@ module.exports = {
     githubAuth: !!process.env.GITHUB_CLIENT_ID,
     PUSHER_APP_KEY: process.env.PUSHER_APP_KEY || '',
     PUSHER_APP_CLUSTER: process.env.PUSHER_APP_CLUSTER || '',
+    PREFIX_ADMIN: process.env.PREFIX_ADMIN,
+    PREFIX_LOGGED: process.env.PREFIX_LOGGED
   },
 
   axios: {
